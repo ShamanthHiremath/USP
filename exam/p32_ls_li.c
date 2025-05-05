@@ -1,6 +1,6 @@
 // Write a C program to implement ls  –li command which lists the files in a specified directory. Your program should Print 5 attributes of files.
 
-// gcc -o ls_li ls_li.c
+// gcc -o ls_li p32_ls_li.c
 // ./ls_li
 
 #include <stdio.h>    // Standard I/O functions
@@ -12,9 +12,9 @@
 
 int main(int argc, char *argv[]) {
     struct dirent *dir; // Structure to hold directory entry details
-    struct stat mystat; // Structure to hold file attributes
+    struct stat filestat; // Structure to hold file attributes
+    
     DIR *dp;
-
     // Open current directory
     dp = opendir(".");
     if (dp == NULL) {
@@ -28,17 +28,18 @@ int main(int argc, char *argv[]) {
     // Read files in the directory
     while ((dir = readdir(dp)) != NULL) {
         // Get file attributes using stat()
-        if (stat(dir->d_name, &mystat) == 0) {
+        if (stat(dir->d_name, &filestat) == 0) {
             // Print file details
             printf("\n%ld %o %d %d %s %s\n", 
-                   mystat.st_ino,     // Inode number
-                   mystat.st_mode,    // File mode (permissions)
-                   mystat.st_uid,     // User ID of owner
-                   mystat.st_gid,     // Group ID of owner
-                   ctime(&mystat.st_atime), // Last access time
+                   filestat.st_ino,     // Inode number
+                   filestat.st_mode,    // File mode (permissions)
+                   filestat.st_uid,     // User ID of owner
+                   filestat.st_gid,     // Group ID of owner
+                   ctime(&filestat.st_atime), // Last access time
                    dir->d_name        // Filename
             );
-        } else {
+        }
+        else {
             perror("Error retrieving file details");
         }
     }
@@ -46,3 +47,55 @@ int main(int argc, char *argv[]) {
     closedir(dp); // Close directory stream
     return 0;
 }
+
+// ./a.out /workspaces/USP/exam/xxx/
+
+
+// #include <stdio.h>    
+// #include <unistd.h>   
+// #include <fcntl.h>    
+// #include <dirent.h>   
+// #include <time.h>     
+// #include <sys/stat.h> 
+
+// int main(int argc, char *argv[]) {
+//     struct dirent *dir;
+//     struct stat filestat;
+//     DIR *dp;
+
+//     // Check if directory argument is provided
+//     if (argc < 2) {
+//         printf("Usage: %s <directory_path>\n", argv[0]);
+//         return 1;
+//     }
+
+//     // Open the specified directory
+//     dp = opendir(argv[1]);
+//     if (dp == NULL) {
+//         perror("Error opening directory");
+//         return 1;
+//     }
+
+//     printf("--Inode--Mode--UID--GID--Access Time--Filename\n");
+
+//     while ((dir = readdir(dp)) != NULL) {
+//         char filepath[1024];
+//         snprintf(filepath, sizeof(filepath), "%s/%s", argv[1], dir->d_name);
+
+//         if (stat(filepath, &filestat) == 0) {
+//             printf("\n%ld %o %d %d %s %s\n", 
+//                    filestat.st_ino,     
+//                    filestat.st_mode,    
+//                    filestat.st_uid,     
+//                    filestat.st_gid,     
+//                    ctime(&filestat.st_atime),
+//                    dir->d_name        
+//             );
+//         } else {
+//             perror("Error retrieving file details");
+//         }
+//     }
+
+//     closedir(dp);
+//     return 0;
+// }

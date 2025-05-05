@@ -1,6 +1,6 @@
 // Write a C program to demonstrate the creation of soft links and  hard links.
 
-// gcc -o link_creator link_creator.c
+// gcc -o link_creator p22_link_creator.c
 // create a hard link
 // ./link_creator -h test.txt hard_link.txt
 // ./link_creator -s test.txt soft_link.txt
@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
     // Get link type (-h for hard link, -s for soft link)
     if (argv[1][0] == '-' && argv[1][1] == 'h') {
         printf("Creating Hard Link: %s → %s\n", argv[2], argv[3]);
+
+        // HARD LINK
         if (link(argv[2], argv[3]) == 0)
             printf("Hard link created successfully.\n");
         else
@@ -29,6 +31,8 @@ int main(int argc, char *argv[]) {
     } 
     else if (argv[1][0] == '-' && argv[1][1] == 's') {
         printf("Creating Soft Link: %s → %s\n", argv[2], argv[3]);
+
+        // SYM LINK
         if (symlink(argv[2], argv[3]) == 0)
             printf("Soft link created successfully.\n");
         else

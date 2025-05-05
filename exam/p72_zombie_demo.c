@@ -1,6 +1,6 @@
 // Write a program to demonstrate the zombie state of a process and provide the solution for the same. 
 
-// gcc -o zombie_demo zombie_demo.c
+// gcc -o zombie_demo p72_zombie_demo.c
 // ./zombie_demo
 
 // In a different terminal, Observe the Zombie Process 
@@ -22,7 +22,8 @@ int main(void) {
             printf("Child pid is: %d\n", getpid());
             printf("Second child, parent pid = %ld\n", (long)getppid());
             exit(0);
-        } else { 
+        }
+        else { 
             printf("Child pid: %d\n", getpid());
             wait(NULL); // Wait for the second child to prevent zombie state
             exit(0);

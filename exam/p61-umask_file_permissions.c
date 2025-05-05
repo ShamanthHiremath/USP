@@ -1,6 +1,6 @@
 // Write a C program to demonstrate the usage of umask and chmod functions.
 
-// gcc -o file_permissions file_permissions.c
+// gcc -o file_permissions p61-umask_file_permissions.c
 // ./file_permissions
 // ls -l foo bar
 
@@ -18,13 +18,13 @@ int main() {
     umask(0);
 
     // Create file "foo" with full read/write permissions for all users
-    creat("foo", RWRWRW);
+    creat("foo.txt", RWRWRW);
 
     // Change umask to restrict group and others from write permissions
     umask(S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 
     // Create file "bar" with the same permissions as "foo", but affected by new umask
-    creat("bar", RWRWRW); // ERROR FIX: Missing semicolon added at end of line
+    creat("bar.txt", RWRWRW); // ERROR FIX: Missing semicolon added at end of line
 
     return 0;
 }

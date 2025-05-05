@@ -1,6 +1,6 @@
 // Write a program to differentiate between dup and dup2 functions
 
-// gcc -o dup_example dup_example.c
+// gcc -o dup_example p52_dup_example.c
 // ./dup_example
 
 #include <stdio.h>    // Standard I/O functions

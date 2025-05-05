@@ -1,0 +1,2 @@
+Line from fd1
+Line from fd2

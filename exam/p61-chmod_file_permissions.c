@@ -1,6 +1,6 @@
 // Write a C program to demonstrate the usage of umask and chmod functions.
 
-// gcc -o modify_permissions modify_permissions.c
+// gcc -o modify_permissions p61-chmod_file_permissions.c
 // ./modify_permissions
 // verify perms
 // ls -l foo bar

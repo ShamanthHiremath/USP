@@ -1,6 +1,6 @@
 // Write a program to read n characters from a file and append them back to the same file using dup2 function.
 
-// gcc -o file_append file_append.c
+// gcc -o file_append p42_file_append.c
 // ./file_append
 
 #include <stdio.h>    // Standard I/O functions
@@ -13,7 +13,7 @@ int main() {
     char buf[50];  // Buffer to hold characters read from the file
 
     // Open "test.txt" with read and write permissions
-    int fd1 = open("test.txt", O_RDWR); // ERROR: Extra closing parenthesis was removed here
+    int fd1 = open("test.txt", O_RDWR);
 
     // Duplicate file descriptor fd1 into fd2
     int fd2 = dup(fd1);

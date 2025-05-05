@@ -1,6 +1,6 @@
 // Write a C program to remove empty files from the given directory.
 
-// gcc -o remove_empty_files remove_empty_files.c
+// gcc -o remove_empty_files p31_remove_empty_files.c
 // ./remove_empty_files
 
 #include <stdio.h>    // Standard I/O functions
@@ -9,9 +9,9 @@
 #include <dirent.h>   // Directory handling functions
 
 int main() {
-    DIR *dp; // Pointer to directory stream
     struct dirent *dir; // Structure to hold directory entry information
     
+    DIR *dp; // Pointer to directory stream
     // Open the current directory (".") for reading
     dp = opendir("."); 
     if (dp == NULL) {

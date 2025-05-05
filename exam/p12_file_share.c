@@ -22,21 +22,22 @@ int main() {
     pid_t pid = fork();
 
     if (pid == 0) {  // Child process
-        char buffer[10];
+        char buff[10];
 
         // Read first 5 bytes from the file
-        read(fd, buffer, 5);
-        buffer[5] = '\0'; // Null-terminate the string
-        printf("Child read: %s\n", buffer);
-    } else {  // Parent process
+        read(fd, buff, 5);
+        buff[5] = '\0'; // Null-terminate the string
+        printf("Child read: %s\n", buff);
+    }
+    else{  // Parent process
         wait(NULL);  // Wait for child to complete its execution
 
-        char buffer[10];
+        char buff[10];
 
         // Read next 5 bytes from the file (after child's read)
-        read(fd, buffer, 5);
-        buffer[5] = '\0'; // Null-terminate the string
-        printf("Parent read: %s\n", buffer);
+        read(fd, buff, 5);
+        buff[5] = '\0'; // Null-terminate the string
+        printf("Parent read: %s\n", buff);
     }
 
     // Close the file descriptor

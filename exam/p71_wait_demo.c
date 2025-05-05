@@ -1,6 +1,6 @@
 // Demonstrate the working of wait and waitpid system calls with a program
 
-// gcc -o wait_demo wait_demo.c
+// gcc -o wait_demo p71_wait_demo.c
 // ./wait_demo
 
 #include <stdio.h>    // Standard I/O functions

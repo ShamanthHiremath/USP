@@ -5,8 +5,8 @@
 
 // or
 // gcc p11_reverse_file.c
-// ./a.out input.txt output.txt linux
-// .\a.exe input.txt output.txt windows
+// ./a.out input.txt output.txt 
+// .\a.exe input.txt output.txt
 
 #include <stdlib.h>   // For exit function
 #include <fcntl.h>    // For file control options
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     // Open source file in read-only mode
     int source = open(argv[1], O_RDONLY);
     
-    // Open destination file in write mode, create if not exists, truncate if exists
+    // Open destination file in write mode, create if not exists, truncate if exists, octal 0, 644 rw- r-- r-- is perms for owner group others
     int dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
     // Move file pointer to the end to determine file size

@@ -1,0 +1,9 @@
+#include <unistd.h>   // For system calls
+#include <stdio.h>    // For standard I/O functions
+#include <sys/stat.h> // For stat structure
+#include <sys/types.h> // For data types like mode_t
+#include <time.h>     // For formatting timestamps
+#include <sys/wait.h> // Wait function for process synchronization
+#include <stdlib.h>   // Exit function
+#include <dirent.h>   // Directory handling functions
+#include <utime.h>    // Functions to update file access/modification times

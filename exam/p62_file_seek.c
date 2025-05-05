@@ -5,8 +5,8 @@
 // iv. Display the file size
 
 
-// gcc -o file_seek file_seek.c
-// file_seek.c
+// gcc -o file_seek p62_file_seek.c
+// ./file_seek
 
 #include <stdio.h>    // Standard I/O functions
 #include <unistd.h>   // System calls like read(), write(), lseek()

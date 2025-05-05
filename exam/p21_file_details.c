@@ -1,6 +1,6 @@
 // Write a C program to display various details of a file using stat structure (At least 5 fields).
 
-// gcc -o file_details file_details.c
+// gcc -o file_details p21_file_details.c
 // ./file_details test.txt
 
 #include <unistd.h>   // For system calls
@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
     struct stat fileStat; // Structure to hold file details
 
     // Get file statistics using stat()
+    // STAT CALL TO FILESTAT
     if (stat(argv[1], &fileStat) == -1) {
         perror("stat");
         return 1;
