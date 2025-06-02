@@ -24,7 +24,7 @@ int main() {
     umask(S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 
     // Create file "bar" with the same permissions as "foo", but affected by new umask
-    creat("bar.txt", RWRWRW); // ERROR FIX: Missing semicolon added at end of line
+    creat("bar.txt", RWRWRW); 
 
     return 0;
 }

@@ -15,7 +15,7 @@ int main() {
     // Open "test.txt" with read and write permissions
     int fd1 = open("test.txt", O_RDWR);
 
-    // Duplicate file descriptor fd1 into fd2
+    // Duplicate file descriptor fd1 into fd2 using dup
     int fd2 = dup(fd1);
 
     // Print the file descriptors for verification
@@ -25,7 +25,7 @@ int main() {
     read(fd1, buf, 10);
 
     // Move fd2 file offset to the end of the file to append
-    lseek(fd2, 0L, SEEK_END);
+    lseek(fd2, 0, SEEK_END);
 
     // Write the same 10 characters back to the file
     write(fd2, buf, 10);

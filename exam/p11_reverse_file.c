@@ -25,13 +25,13 @@ int main(int argc, char *argv[]) {
     int dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
     // Move file pointer to the end to determine file size
-    int filesize = lseek(source, (off_t)0, SEEK_END);
+    int filesize = lseek(source, 0, SEEK_END);
 
     char buf;  // Buffer to hold one character at a time
 
     // Loop through the file in reverse order
     for (int i = filesize - 1; i >= 0; i--) {
-        lseek(source, (off_t)i, SEEK_SET);  // Move pointer to position i
+        lseek(source, i, SEEK_SET);  // Move pointer to position i
         read(source, &buf, 1);  // Read one byte
         write(dest, &buf, 1);   // Write byte to destination file
     }

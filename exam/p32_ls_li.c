@@ -12,7 +12,7 @@
 
 int main(int argc, char *argv[]) {
     struct dirent *dir; // Structure to hold directory entry details
-    struct stat filestat; // Structure to hold file attributes
+    struct stat fstat; // Structure to hold file attributes
     
     DIR *dp;
     // Open current directory
@@ -28,14 +28,14 @@ int main(int argc, char *argv[]) {
     // Read files in the directory
     while ((dir = readdir(dp)) != NULL) {
         // Get file attributes using stat()
-        if (stat(dir->d_name, &filestat) == 0) {
+        if (stat(dir->d_name, &fstat) == 0) {
             // Print file details
             printf("\n%ld %o %d %d %s %s\n", 
-                   filestat.st_ino,     // Inode number
-                   filestat.st_mode,    // File mode (permissions)
-                   filestat.st_uid,     // User ID of owner
-                   filestat.st_gid,     // Group ID of owner
-                   ctime(&filestat.st_atime), // Last access time
+                   fstat.st_ino,     // Inode number
+                   fstat.st_mode,    // File mode (permissions)
+                   fstat.st_uid,     // User ID of owner
+                   fstat.st_gid,     // Group ID of owner
+                   ctime(&fstat.st_atime), // Last access time
                    dir->d_name        // Filename
             );
         }
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 
 // int main(int argc, char *argv[]) {
 //     struct dirent *dir;
-//     struct stat filestat;
+//     struct stat fstat;
 //     DIR *dp;
 
 //     // Check if directory argument is provided
@@ -82,13 +82,13 @@ int main(int argc, char *argv[]) {
 //         char filepath[1024];
 //         snprintf(filepath, sizeof(filepath), "%s/%s", argv[1], dir->d_name);
 
-//         if (stat(filepath, &filestat) == 0) {
+//         if (stat(filepath, &fstat) == 0) {
 //             printf("\n%ld %o %d %d %s %s\n", 
-//                    filestat.st_ino,     
-//                    filestat.st_mode,    
-//                    filestat.st_uid,     
-//                    filestat.st_gid,     
-//                    ctime(&filestat.st_atime),
+//                    fstat.st_ino,     
+//                    fstat.st_mode,    
+//                    fstat.st_uid,     
+//                    fstat.st_gid,     
+//                    ctime(&fstat.st_atime),
 //                    dir->d_name        
 //             );
 //         } else {

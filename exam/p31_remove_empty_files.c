@@ -9,7 +9,7 @@
 #include <dirent.h>   // Directory handling functions
 
 int main() {
-    struct dirent *dir; // Structure to hold directory entry information
+    struct dirent *dir; // Structure to hold directory file entry information
     
     DIR *dp; // Pointer to directory stream
     // Open the current directory (".") for reading
