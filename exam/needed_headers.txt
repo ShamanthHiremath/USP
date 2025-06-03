@@ -6,7 +6,9 @@
 #include <sys/wait.h> // Wait function for process synchronization
 #include <sys/stat.h> // For stat structure
 #include <sys/types.h> // For data types like mode_t
+#include <syslog.h> // for log monitoring
 
 #include <time.h>     // For formatting timestamps
 #include <dirent.h>   // Directory handling functions
 #include <utime.h>    // Functions to update file access/modification times
+
